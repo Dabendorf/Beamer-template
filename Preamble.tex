@@ -1,0 +1,78 @@
+\documentclass[aspectratio=169,fleqn,xcolor={dvipsnames}]{beamer}
+
+\usetheme[pageofpages=of]{hubln}
+% That document is the main document of the presentation which needs to be compiled
+% The rest is happening in Presentation.tex
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[norsk]{babel}
+\usepackage{tabularx}
+\usepackage{hhline}
+\usepackage{array}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{cancel}
+\usepackage{multirow}
+\usepackage{comment}
+\usepackage{minted,xcolor}
+\usepackage{caption}
+\usepackage{subcaption}
+\usetikzlibrary{cd}
+\usetikzlibrary{babel}
+\usepackage{relsize}
+\usepackage{amssymb}
+\usepackage{csquotes}
+\usemintedstyle{monokai} %vs
+%\definecolor{bg}{HTML}{282828}
+\definecolor{bg}{RGB}{40, 40, 40}
+\setminted{bgcolor=black,frame=lines,
+               framesep=2mm}
+\usefonttheme{professionalfonts}
+\setbeamercovered{invisible}
+\hfuzz=8.64pt % Antioverfullbox-inator
+
+\setbeamercolor{block body alerted}{bg=alerted text.fg!10}
+\setbeamercolor{block title alerted}{bg=alerted text.fg!20}
+\setbeamercolor{block body}{bg=structure!10}
+\setbeamercolor{block title}{bg=structure!20}
+\setbeamercolor{block body example}{bg=green!10}
+\setbeamercolor{block title example}{bg=green!20}
+\setbeamertemplate{blocks}[rounded][shadow]
+
+
+\tikzset{onslide/.code args={<#1>#2}{% from https://tex.stackexchange.com/a/6155/263192
+  \only<#1>{\pgfkeysalso{#2}}
+}}
+
+\newcommand{\newLine}{%
+  \hfill\break
+}
+
+%\newcommand{\comment}[1]{}
+\tikzset{vertex/.style={draw, circle, inner sep=1mm}}
+\newcommand{\incomplete}[3][1.5cm]{\begin{tikzpicture}
+\foreach \n in {1,...,#2}{\node[vertex]at({90-360/#2*(\n-1)}:#1)(\n){\n};}
+\foreach \v/\w in {#3}{\draw(\v)--(\w);}
+\end{tikzpicture}}
+\tikzset{properties/.style={orange, ultra thick}}
+\tikzset{propertiesRed/.style={red, ultra thick}}
+\tikzset{propertiesBlue/.style={blue, ultra thick}}
+\tikzset{propertiesGrey/.style={gray, ultra thick}}
+
+\usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+% Insert the data of the presentation appearing on the first page
+\author[ls]{Guillaume}
+\title[sgp]{Title of your presentation}
+\institute{Institutt for informatikk \\ Universitetet i Bergen}
+\date[12.05.22]{12 Mai 2022}
+
+\begin{document}
+  \input{Presentation}
+\end{document}
